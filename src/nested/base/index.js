@@ -218,5 +218,26 @@ module.exports = function globals (arc) {
     }
   }
 
+  // nest a rules stack
+  if (arc.rules) {
+    template.Resources.Rules = {
+      Type: 'AWS::CloudFormation::Stack',
+      Properties: {
+        TemplateURL: {
+          'Fn::Sub': [
+            'http://${bucket}.s3.${AWS::Region}.amazonaws.com/${file}',
+            {bucket, file:`${appname}-cfn-rules.yaml`}
+          ]
+        },
+        Parameters: {
+          Role: {'Fn::GetAtt': ['Role', 'Arn']},
+        }
+      }
+    }
+    if (arc.static) {
+      template.Resources.Scheduled.Properties.Parameters.StaticBucket = {Ref: 'StaticBucket'}
+    }
+  }
+
   return template
 }

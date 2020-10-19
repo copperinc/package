@@ -3,6 +3,7 @@ let events = require('./events')
 let globals = require('./globals')
 let http = require('./http')
 let indexes = require('./indexes')
+let rules = require('./rules')
 let queues = require('./queues')
 let scheduled = require('./scheduled')
 let statics = require('./static')
@@ -15,6 +16,7 @@ module.exports = {
   globals,
   http,
   indexes,
+  rules,
   queues,
   scheduled,
   static: statics,

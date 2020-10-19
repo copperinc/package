@@ -22,8 +22,8 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@architect/http-proxy": "~3.12.3",
-    "@architect/parser": "~2.3.0",
-    "@architect/utils": "~1.5.12",
+    "@architect/parser": "copperinc/parser#iot",
+    "@architect/utils": "copperinc/utils#iot",
     "glob": "~7.1.6",
     "mime-types": "~2.1.27"
   },

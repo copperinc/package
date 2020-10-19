@@ -45,6 +45,9 @@ function toCFN (arc) {
   if (arc.tables && arc.tables.some(hasStream))
     template[`${appname}-cfn-tables.json`] = nested.tables(arc)
 
+  if (arc.rules)
+    template[`${appname}-cfn-rules.json`] = nested.rules(arc)
+
   return template
 }
 

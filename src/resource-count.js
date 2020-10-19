@@ -29,5 +29,8 @@ module.exports = function resourceCount (arc) {
   if (arc.scheduled)
     count += arc.scheduled.length
 
+  if (arc.rules)
+    count += arc.rules.length
+
   return count
 }

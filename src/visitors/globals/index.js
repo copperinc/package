@@ -186,6 +186,23 @@ module.exports = function visitGlobals (arc, template) {
     }*/
   }
 
+  // allow lambdas to publish to iot topics
+  if (arc.rules) {
+    template.Resources.Role.Properties.Policies.push({
+      PolicyName: 'ArcIoTDataPolicy',
+      PolicyDocument: {
+        Statement: [{
+          Effect: 'Allow',
+          Action: [
+            'iot:Connect',
+            'iot:Publish'
+          ],
+          Resource: '*'
+        }]
+      }
+    })
+  }
+
   // rip in some ssm params
   template = ssm(arc, template)
 
